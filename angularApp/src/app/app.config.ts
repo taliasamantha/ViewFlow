@@ -13,11 +13,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-
-    provideRouter(routes, withRouterConfig({ onSameUrlNavigation: 'reload' })),
-
-    provideClientHydration(withEventReplay()),
+    provideRouter(routes),
     importProvidersFrom(HttpClientModule),
     provideHttpClient(withFetch()),
   ],
+
 };

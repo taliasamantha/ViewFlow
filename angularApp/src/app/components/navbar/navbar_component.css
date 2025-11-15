@@ -35,7 +35,6 @@ a:hover {
   gap: 10px;
   padding: 0.5rem 1rem;
   border: 2px solid #000; /* bordo nero */
-
   border-radius: 999px; /* pill shape */
   width: 200px; /* larghezza fissa, puoi cambiare */
   transition: box-shadow 0.3s;
@@ -65,9 +64,9 @@ a:hover {
   padding: 15px;
   margin-left: 125px;
 }
-.fa-user-astronaut {
+.fa-user-astronaut{
   margin-right: 20px;
-  font-size: xx-large;
-  cursor: pointer;
-  color: #6226e3;
+    font-size: xx-large;
+    cursor: pointer;
+    color: #6226e3;
 }

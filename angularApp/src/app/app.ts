@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FooterPageComponent } from './components/footer/footer_component';
-import { NavabarPageComponent } from './components/navbar/navbar_component';
-import { HttpClientModule } from '@angular/common/http';
+import { NavbarPageComponent } from './components/navbar/navbar_component';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,7 +8,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
-  imports: [NavabarPageComponent, FooterPageComponent, RouterModule, HttpClientModule],
+  imports: [NavbarPageComponent, FooterPageComponent, RouterModule],
 })
 export class App {
   protected readonly title = signal('angularApp');
