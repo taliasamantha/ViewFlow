@@ -1,0 +1,73 @@
+header {
+  background: linear-gradient(to bottom, #f6c325, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.leftPanel {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 15px;
+}
+.imgViewFlow {
+  width: 90px;
+  height: 90px;
+  border-radius: 50px;
+}
+a {
+  color: black;
+  text-decoration: none;
+  font-size: large;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+a:hover {
+  color: #6226e3;
+}
+.linkSection {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.centerPanel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.5rem 1rem;
+  border: 2px solid #000; /* bordo nero */
+
+  border-radius: 999px; /* pill shape */
+  width: 200px; /* larghezza fissa, puoi cambiare */
+  transition: box-shadow 0.3s;
+}
+
+.centerPanel:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.centerPanel i {
+  color: #6226e3;
+  font-size: 1rem;
+}
+
+.centerPanel input {
+  flex: 1;
+  background: transparent;
+  border: transparent;
+  outline: none;
+  color: #000;
+  font-size: 0.95rem;
+}
+.centerPanel input::placeholder {
+  color: #6226e3;
+}
+.rightPanel {
+  padding: 15px;
+  margin-left: 125px;
+}
+.fa-user-astronaut {
+  margin-right: 20px;
+  font-size: xx-large;
+  cursor: pointer;
+  color: #6226e3;
+}

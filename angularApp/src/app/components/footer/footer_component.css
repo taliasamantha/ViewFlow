@@ -1,0 +1,17 @@
+footer {
+  background: linear-gradient(to bottom,#ffffff, #f6c325 );
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.logoFooter a {
+  margin: 0 12px;
+  color: #9b59b6; /* viola fluo */
+  font-size: 1.5rem;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.logoFooter a:hover {
+  color: #d17aff; 
+  transform: scale(1.2); 
+}
