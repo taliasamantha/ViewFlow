@@ -1,0 +1,28 @@
+<div class="episodes-container">
+  <div class="episode-card" *ngFor="let movie of movies">
+    <div class="image-wrapper">
+      <!-- Placeholder poster, puoi sostituire con un vero poster se disponibile -->
+      <img src="https://via.placeholder.com/280x400?text=Movie+Poster" alt="{{ movie.title }}" />
+    </div>
+
+    <div class="episode-info">
+      <h2 class="title">{{ movie.title }}</h2>
+      <p class="genres">Quality: {{ movie.quality }}</p>
+      <p class="network">IMDb ID: {{ movie.imdb_id }}</p>
+      <div class="link">
+        <a
+          class="official-link"
+          [href]="movie.embed_url"
+          target="_blank"
+          >Watch</a
+        >
+        <a
+          class="official-link"
+          [href]="movie.embed_url_tmdb"
+          target="_blank"
+          >TMDb Page</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

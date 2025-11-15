@@ -5,24 +5,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilmService } from '../../services/film_service';
 
 @Component({
-  selector: 'app-home-page',
+  selector: 'movies-page',
   standalone: true,
-  templateUrl: './home_page_component.html',
-  styleUrls: ['./home_page_component.css'],
+  templateUrl: './movies_page.html',
+  styleUrls: ['./movies_page.css'],
   imports: [CommonModule, HttpClientModule],
 })
-export class HomePageComponent implements OnInit {
+export class MoviesPageComponent implements OnInit {
   episodes: any[] = [];
   movies: any[] = [];
 
-  constructor(private tvService: TvService, private movieService: FilmService) {}
+  constructor( private movieService: FilmService) {}
 
   ngOnInit(): void {
-    this.tvService.getSchedule().subscribe((data) => {
+    this.movieService.getMovies().subscribe((data) => {
       this.episodes = data;
     });
     this.movieService.getMovies(1).subscribe((data) => {
-      this.movies = data.result; // la proprietà `result` contiene i film
+      this.movies = data.result;
     });
   }
 }

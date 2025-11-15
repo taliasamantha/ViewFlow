@@ -1,15 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HomePageComponent } from "./components/home_page/home_page_component";
-import { FooterPageComponent } from "./components/footer/footer_component";
-import { NavabarPageComponent } from "./components/navbar/navbar_component";
+import { FooterPageComponent } from './components/footer/footer_component';
+import { NavabarPageComponent } from './components/navbar/navbar_component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  // imports: [RouterOutlet],
+  standalone: true,
   templateUrl: './app.html',
-  styleUrl: './app.css',
-  imports: [HomePageComponent, FooterPageComponent, NavabarPageComponent]
+  styleUrls: ['./app.css'],
+  imports: [NavabarPageComponent, FooterPageComponent, RouterModule, HttpClientModule],
 })
 export class App {
   protected readonly title = signal('angularApp');

@@ -1,1 +1,26 @@
-<p>ciao homew funziona </p>
+<div class="episodes-container">
+  <div class="episode-card" *ngFor="let ep of episodes">
+    <div class="image-wrapper">
+      <img *ngIf="ep.show?.image?.medium" [src]="ep.show.image.medium" alt="{{ ep.show.name }}" />
+    </div>
+
+    <div class="episode-info">
+      <h2 class="title">{{ ep.show?.name || ep.name }}</h2>
+      <p class="genres">{{ ep.show.genres?.join(' • ') }}</p>
+      <p class="network">Network: {{ ep.show.network?.name || 'N/A' }}</p>
+      <p class="rating">Rating: {{ ep.show.rating?.average || 'N/A' }} ⭐</p>
+      <p class="runtime">Runtime: {{ ep.show.runtime }} min</p>
+      <p class="air-dates">From {{ ep.show.premiered }} to {{ ep.show.ended || 'ongoing' }}</p>
+      <div class="link">
+        <a
+          class="official-link"
+          [href]="ep.show.officialSite"
+          target="_blank"
+          *ngIf="ep.show.officialSite"
+          >Official Site</a
+        >
+        <a class="official-link" [href]="ep.show.url" target="_blank">TVMaze Page</a>
+      </div>
+    </div>
+  </div>
+</div>
