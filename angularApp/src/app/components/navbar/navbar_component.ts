@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SearchService } from '../../services/searchService';
 
 @Component({
   selector: 'navbar-page',
@@ -9,4 +10,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar_component.html',
   styleUrls: ['./navbar_component.css'],
 })
-export class NavbarPageComponent {}
+export class NavbarPageComponent {
+  constructor(private searchService: SearchService) {}
+
+onSearch(term: string) {
+  this.searchService.setSearchTerm(term);
+}
+}

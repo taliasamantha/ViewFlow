@@ -1,28 +1,58 @@
 import { Component, OnInit } from '@angular/core';
 import { TvService } from '../../services/serieTv_service';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { FilmService } from '../../services/film_service';
+import { SearchService } from '../../services/searchService';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   templateUrl: './home_page_component.html',
   styleUrls: ['./home_page_component.css'],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
 })
 export class HomePageComponent implements OnInit {
-  episodes: any[] = [];
-  movies: any[] = [];
 
-  constructor(private tvService: TvService, private movieService: FilmService) {}
+  episodes: any[] = [];          // dati originali
+  filteredCards: any[] = [];     // dati filtrati
+
+  constructor(
+    private tvService: TvService,
+    private searchService: SearchService
+  ) {}
 
   ngOnInit(): void {
-    this.tvService.getSchedule().subscribe((data) => {
-      this.episodes = data;
+
+    this.tvService.getSchedule().subscribe(data => {
+      this.episodes = data;         // salva risultati da API
+      this.filteredCards = data;    // mostra tutto all’inizio
     });
-    this.movieService.getMovies(1).subscribe((data) => {
-      this.movies = data.result; // la proprietà `result` contiene i film
+
+    // ascolta la barra di ricerca
+    this.searchService.searchTerm$.subscribe(term => {
+      this.filterCards(term);
+    });
+  }
+
+  filterCards(term: string) {
+    term = term.toLowerCase().trim();
+
+    if (!term) {
+      this.filteredCards = this.episodes;
+      return;
+    }
+
+    this.filteredCards = this.episodes.filter(ep => {
+      const serieName = ep.show?.name?.toLowerCase() || '';
+      const episodeName = ep.name?.toLowerCase() || '';
+      const genres = ep.show?.genres?.join(' ').toLowerCase() || '';
+      const network = ep.show?.network?.name?.toLowerCase() || '';
+
+      return (
+        serieName.includes(term) ||
+        episodeName.includes(term) ||
+        genres.includes(term) ||
+        network.includes(term)
+      );
     });
   }
 }

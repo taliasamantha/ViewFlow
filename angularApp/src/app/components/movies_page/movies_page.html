@@ -1,6 +1,6 @@
 <div class="episodes-container" *ngIf="episodes && episodes.length; else noEpisodes">
 
-  <div class="episode-card" *ngFor="let ep of episodes">
+  <div class="episode-card" *ngFor="let ep of filteredMovie">
     
     <!-- IMAGE -->
     <div class="image-wrapper">

@@ -1,5 +1,5 @@
 <div class="episodes-container">
-  <div class="episode-card" *ngFor="let ep of episodes">
+  <div class="episode-card" *ngFor="let ep of filteredCards">
     <div class="image-wrapper">
       <img *ngIf="ep.show?.image?.medium" [src]="ep.show.image.medium" alt="{{ ep.show.name }}" />
     </div>

@@ -8,11 +8,19 @@
       <a routerLink="/movies">Film</a>
     </div>
   </div>
-
   <div class="centerPanel">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="text" placeholder="Cerca..." />
+    <button (click)="onSearch(searchInput.value)">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+    <input
+      #searchInput
+      type="text"
+      placeholder="Cerca..."
+      (keyup.enter)="onSearch(searchInput.value)"
+    />
   </div>
+
   <div class="rightPanel">
     <i class="fa-solid fa-user-astronaut"></i>
   </div>
