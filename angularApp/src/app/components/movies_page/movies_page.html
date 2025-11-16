@@ -1,58 +1,28 @@
-<div class="episodes-container" *ngIf="episodes && episodes.length; else noEpisodes">
-
+<div class="episodes-container" *ngIf="episodes && episodes.length">
   <div class="episode-card" *ngFor="let ep of filteredMovie">
-    
-    <!-- IMAGE -->
     <div class="image-wrapper">
-      <img 
-        *ngIf="ep?.image?.medium"
-        [src]="ep.image.medium"
-        [alt]="ep?.name || 'Episode image'"
-      />
-      <img 
+      <img *ngIf="ep?.image?.medium" [src]="ep.image.medium" [alt]="ep?.name || 'Episode image'" />
+      <img
         *ngIf="!ep?.image?.medium"
         src="https://via.placeholder.com/280x160?text=No+Image"
         alt="No Image"
       />
     </div>
 
-    <!-- INFO -->
     <div class="episode-info">
-      
       <h2 class="title">{{ ep?.name || 'Untitled Episode' }}</h2>
 
-      <p class="genres">
-        S{{ ep?.season || '?' }} • E{{ ep?.number || '?' }}
-      </p>
+      <p class="genres">S{{ ep?.season || '?' }} • E{{ ep?.number || '?' }}</p>
 
-      <p class="rating">
-        Rating: {{ ep?.rating?.average || 'N/A' }} ⭐
-      </p>
+      <p class="rating">Rating: {{ ep?.rating?.average || 'N/A' }} ⭐</p>
 
-      <p class="runtime">
-        Runtime: {{ ep?.runtime || 'N/A' }} min
-      </p>
+      <p class="runtime">Runtime: {{ ep?.runtime || 'N/A' }} min</p>
 
-      <p class="air-dates">
-        Air date: {{ ep?.airdate || 'Unknown' }}
-      </p>
+      <p class="air-dates">Air date: {{ ep?.airdate || 'Unknown' }}</p>
 
       <div class="link">
-        <a 
-          class="official-link" 
-          *ngIf="ep?.url" 
-          [href]="ep.url" 
-          target="_blank">
-          Episode Page
-        </a>
+        <a class="official-link" *ngIf="ep?.url" [href]="ep.url" target="_blank"> Episode Page </a>
       </div>
-
     </div>
   </div>
-
 </div>
-
-<!-- FALLBACK SE NON CI SONO EPISODI -->
-<ng-template #noEpisodes>
-  <p>Nessun episodio disponibile.</p>
-</ng-template>
