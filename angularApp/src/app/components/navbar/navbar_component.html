@@ -21,7 +21,45 @@
     />
   </div>
 
-  <div class="rightPanel">
+  <button class="rightPanel" (click)="isOpen()">
     <i class="fa-solid fa-user-astronaut"></i>
+  </button>
+<div class="modal-backdrop" *ngIf="modalIsOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="closeModal()">&times;</span>
+    
+    <!-- Intestazione -->
+    <h2 class="modal-title">Invia una richiesta</h2>
+    <p class="modal-subtitle">Inserisci i tuoi dati o messaggio qui sotto</p>
+
+    <!-- Form -->
+    <form (ngSubmit)="submitRequest()" #requestForm="ngForm" class="formContainer">
+      <input
+        type="text"
+        name="username"
+        placeholder="Il tuo nome"
+        [(ngModel)]="request.username"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="La tua email"
+        [(ngModel)]="request.email"
+        required
+      />
+      <textarea
+        name="message"
+        placeholder="Scrivi un messaggio..."
+        [(ngModel)]="request.message"
+        required
+      ></textarea>
+
+      <button type="submit" [disabled]="!requestForm.form.valid">
+        Invia richiesta
+      </button>
+    </form>
   </div>
+</div>
+
 </header>
